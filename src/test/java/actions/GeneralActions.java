@@ -3,7 +3,7 @@ package actions;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
-import Page.SignUpPage;
+import Page.SignUpPage1;
 import Page.SignUpStep2Page;
 import Base.BaseActions;
 import Base.BasePage;
@@ -21,9 +21,9 @@ public class GeneralActions extends BasePage  {
 	 }
 
 	@Step
-	public SignUpPage typeSignUpInfo(String emailAddress, String password, String firstName, String lastName,
+	public SignUpPage1 typeSignUpInfo(String emailAddress, String password, String firstName, String lastName,
 			String companyName, String PhoneNumber) {
-		return PageFactory.initElements(driver(), SignUpPage.class).typeEmail(emailAddress).typePassword(password).typeFirstName(firstName)
+		return PageFactory.initElements(driver(), SignUpPage1.class).typeEmail(emailAddress).typePassword(password).typeFirstName(firstName)
 				.typeLastName(lastName).typeCompanyName(companyName).typePhoneNumber(PhoneNumber);
 	}
 

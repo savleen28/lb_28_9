@@ -5,7 +5,7 @@
     <classes>
       <class name="tests.SignInUpTest">
         <methods>
-          <include name="signInScreenFunctional"/>
+          <include name="signUpConfirmation"/>
           <include name="setUp"/>
         </methods>
       </class> <!-- tests.SignInUpTest -->

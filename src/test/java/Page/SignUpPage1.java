@@ -9,7 +9,7 @@ import Base.BasePage;
 import org.openqa.selenium.*;
 import reporting.CustomAssert;
 
-public class SignUpPage extends BasePage  {
+public class SignUpPage1 extends BasePage  {
 	
 	/*WebDriver driver;                            
 
@@ -17,7 +17,7 @@ public class SignUpPage extends BasePage  {
 		this.driver = driver;
 	}*/
 	
-	public SignUpPage() {
+	public SignUpPage1() {
 		PageFactory.initElements(driver(), this);
 	}
 	
@@ -62,7 +62,7 @@ public class SignUpPage extends BasePage  {
 	}
 	 
 	@Step
-	public SignUpPage waitForPageToLoad() {
+	public SignUpPage1 waitForPageToLoad() {
 		waitForElementVisibility(nextStep);
 		return this;
 	}
@@ -74,7 +74,7 @@ public class SignUpPage extends BasePage  {
 	    }
 	 
 	 @Step
-	    public SignUpPage checkEmailInputPlaceholder(CustomAssert customAssert) {
+	    public SignUpPage1 checkEmailInputPlaceholder(CustomAssert customAssert) {
 	       
 	        if (isElementDisplayed(Constants.ELEMENT_30_TIMEOUT_SECONDS, email)) {
 	            try {
@@ -93,7 +93,7 @@ public class SignUpPage extends BasePage  {
 	    }
 	 
 	 @Step
-	    public SignUpPage checkPasswordInputPlaceholder(CustomAssert customAssert) {
+	    public SignUpPage1 checkPasswordInputPlaceholder(CustomAssert customAssert) {
 	       
 	        if (isElementDisplayed(Constants.ELEMENT_30_TIMEOUT_SECONDS, password)) {
 	            try {
@@ -112,7 +112,7 @@ public class SignUpPage extends BasePage  {
 	    }
 	 
 	 @Step
-	    public SignUpPage checkFirstNameInputPlaceholder(CustomAssert customAssert) {
+	    public SignUpPage1 checkFirstNameInputPlaceholder(CustomAssert customAssert) {
 	       
 	        if (isElementDisplayed(Constants.ELEMENT_30_TIMEOUT_SECONDS, firstName)) {
 	            try {
@@ -131,7 +131,7 @@ public class SignUpPage extends BasePage  {
 	    }
 	 
 	 @Step
-	    public SignUpPage checkLastNameInputPlaceholder(CustomAssert customAssert) {
+	    public SignUpPage1 checkLastNameInputPlaceholder(CustomAssert customAssert) {
 	       
 	        if (isElementDisplayed(Constants.ELEMENT_30_TIMEOUT_SECONDS, lastName)) {
 	            try {
@@ -151,7 +151,7 @@ public class SignUpPage extends BasePage  {
 
 
 	 @Step
-	    public SignUpPage checkCompanyNameInputPlaceholder(CustomAssert customAssert) {
+	    public SignUpPage1 checkCompanyNameInputPlaceholder(CustomAssert customAssert) {
 	       
 	        if (isElementDisplayed(Constants.ELEMENT_30_TIMEOUT_SECONDS, companyName)) {
 	            try {
@@ -170,7 +170,7 @@ public class SignUpPage extends BasePage  {
 	    }
 	 
 	 @Step
-	    public SignUpPage checkPhoneNumberInputPlaceholder(CustomAssert customAssert) {
+	    public SignUpPage1 checkPhoneNumberInputPlaceholder(CustomAssert customAssert) {
 	       
 	        if (isElementDisplayed(Constants.ELEMENT_30_TIMEOUT_SECONDS, phoneNumber)) {
 	            try {
@@ -189,55 +189,55 @@ public class SignUpPage extends BasePage  {
 	    }
 	 
 	 @Step
-	    public SignUpPage typeEmail(String emailInput) {
+	    public SignUpPage1 typeEmail(String emailInput) {
 	        CustomAssert.hardAssertTrue(isElementDisplayed(Constants.ELEMENT_30_TIMEOUT_SECONDS, email), "Can not type email as corresponding input was not found.");
 	        type(emailInput, email);
 	        return this;
 	    }
 	 
 	 @Step
-	    public SignUpPage typePassword(String passwordInput) {
+	    public SignUpPage1 typePassword(String passwordInput) {
 	        CustomAssert.hardAssertTrue(isElementDisplayed(Constants.ELEMENT_30_TIMEOUT_SECONDS, password), "Can not type password as corresponding input was not found.");
 	        type(passwordInput, password);
 	        return this;
 	    }
 	 
 	 @Step
-	    public SignUpPage typeFirstName(String firstNameInput) {
+	    public SignUpPage1 typeFirstName(String firstNameInput) {
 	       CustomAssert.hardAssertTrue(isElementDisplayed(Constants.ELEMENT_30_TIMEOUT_SECONDS, firstName), "Can not type first name as corresponding input was not found.");
 	        type(firstNameInput, firstName);
 	        return this;
 	    }
 	 
 	 @Step
-	    public SignUpPage typeLastName(String lastNameInput) {
+	    public SignUpPage1 typeLastName(String lastNameInput) {
 	        CustomAssert.hardAssertTrue(isElementDisplayed(Constants.ELEMENT_30_TIMEOUT_SECONDS, lastName), "Can not type last name as corresponding input was not found.");
 	        type(lastNameInput, lastName);
 	        return this;
 	    }
 	 
 	 @Step
-	    public SignUpPage typeCompanyName(String companyNameInput) {
+	    public SignUpPage1 typeCompanyName(String companyNameInput) {
 	       CustomAssert.hardAssertTrue(isElementDisplayed(Constants.ELEMENT_30_TIMEOUT_SECONDS, companyName), "Can not type company name as corresponding input was not found.");
 	        type(companyNameInput, companyName);
 	        return this;
 	    }
 	 
 	 @Step
-	    public SignUpPage typePhoneNumber(String phoneNumberInput) {
+	    public SignUpPage1 typePhoneNumber(String phoneNumberInput) {
 	        CustomAssert.hardAssertTrue(isElementDisplayed(Constants.ELEMENT_30_TIMEOUT_SECONDS, companyName), "Can not type company name as corresponding input was not found.");
 	        type(phoneNumberInput, phoneNumber);
 	        return this;
 	    }
 	 
 	 @Step
-	    public SignUpPage clickShowPassword() {
+	    public SignUpPage1 clickShowPassword() {
 	        click(showHidepwdCheckBox);
 	        return this;
 	    }
 	 
 	 @Step
-	    public SignUpPage checkEnteredInfoAndHidePasswordButton(CustomAssert customAssert,String emailEntered, String passwordEntered, String firstNameEntered, String lastNameEntered, String companyNameEntered, String phoneEntered) {
+	    public SignUpPage1 checkEnteredInfoAndHidePasswordButton(CustomAssert customAssert,String emailEntered, String passwordEntered, String firstNameEntered, String lastNameEntered, String companyNameEntered, String phoneEntered) {
 		 customAssert.assertEquals(email.getAttribute("value"), emailEntered, "Email input text was not correct.");
 		 customAssert.assertEquals(password.getAttribute("value"), passwordEntered, "Password input text was not correct.");
 		 customAssert.assertEquals(password.getAttribute("type"), "password", "Password input text was not hidden.");

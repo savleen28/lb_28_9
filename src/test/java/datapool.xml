@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data>
+
+    <browser type="*">
+
+        <credentials name="premiumCredentials">
+            <arg>qatestlab_premium</arg>
+            <arg>qn17chng</arg>
+        </credentials>
+
+        <credentials name="pcMilerCredentials">
+            <arg>qatestlab_pcmiler</arg>
+            <arg>qn17chng</arg>
+        </credentials>
+
+        <credentials name="rateCheckCredentials">
+            <arg>qatestlab_ratecheck</arg>
+            <arg>qn17chng</arg>
+        </credentials>
+
+        <credentials name="noAddonCredentials">
+            <arg>qatestlab_noaddon</arg>
+            <arg>qn17chng</arg>
+        </credentials>
+
+        <credentials name="verifiedCredentials">
+            <arg>123lbtester@gmail.com</arg>
+            <arg>loadboard</arg>
+        </credentials>
+
+        <credentials name="profileEmailCredentials">
+            <arg>qa@test.123loadboard.us</arg>
+            <arg>tKj7tQjd1Gkrdu7K</arg>
+        </credentials>
+
+    </browser>
+
+</data>

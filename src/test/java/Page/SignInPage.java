@@ -58,7 +58,7 @@ public class SignInPage extends BasePage {
 
 	@Step
 	public SignInPage typeUsername(String username) {
-		// waitForElementVisibility(usernameInputField);
+		waitForElementVisibility(usernameInputField);
 		type(username, usernameInputField);
 		return this;
 	}
@@ -102,9 +102,9 @@ public class SignInPage extends BasePage {
 	}
 
 	@Step
-	public SignUpPage clickSignUpLink() {
+	public SignUpPage1 clickSignUpLink() {
 		click(signUp);
-		return PageFactory.initElements(driver(), SignUpPage.class);
+		return PageFactory.initElements(driver(), SignUpPage1.class);
 	}
 
 	@Step

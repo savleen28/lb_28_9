@@ -13,10 +13,8 @@ import reporting.CustomAssert;
 
 public class SignUpStep2Page extends BasePage{
 	
-	WebDriver driver;
-
-	public SignUpStep2Page(WebDriver driver) {
-		this.driver = driver;
+	public SignUpStep2Page() {
+		PageFactory.initElements(driver(), this);
 	}
 
 	

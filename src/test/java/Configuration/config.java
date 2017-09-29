@@ -59,6 +59,15 @@ public class config {
 	public static final String selectMonthSignUp2 = "Select Month";
 	public static final String selectYearSignUp2 = "Select Year";
 	public static final String cscSignUp2 = "Card Security Code (CSC)";
+	//Confirmation Page
+	public static final String confMessageText = "//div[@class='signup--forms']/p";
+	public static final String updateEmailLink = "//*[@id=\"signup--resendemail-togglebtn\"]";
+	public static final String resendEmailLink = "//*[@id=\"signup--forms\"]/form[2]/p/a";
+	public static final String resendEmailText = "//div[@class='resend-message valid']/p";
+	public static final String updateEmailTextBox = "//*[@id=\"signup--forms\"]/form[1]/div/input[1]";
+	public static final String updateEmailButton = "//*[@id=\"signup--forms\"]/form[1]/div/input[2]";
+	public static final String updateEmailText = "//div[@class='resend-message valid']/p";
+	
 	
 	
 	

@@ -25,10 +25,10 @@ public class BaseTest {
 	
 	@BeforeClass(alwaysRun=true)
     public void setUp() {
-		System.setProperty("webdriver.chrome.driver", "C:\\Users\\BEDI\\Downloads\\software\\chromedriver_win32\\chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\SavleenB\\Softwares\\chromedriver_win32\\chromedriver.exe");
 		driver =new ChromeDriver();
 		driver.get("https://www.dev.123loadboard.com/");
-		//driver.manage().window().maximize();
+		driver.manage().window().maximize();
 	}
 	
 	/*@BeforeClass

@@ -11,7 +11,7 @@ import org.testng.annotations.BeforeClass;
 import ru.yandex.qatools.allure.annotations.Step;
 import utils.Constants;
 
-public class BasePage /*extends BaseTest*/ {
+public class BasePage extends BaseTest {
 	public static WebDriver driver() {   
 		return BaseTest.driver();
 	}

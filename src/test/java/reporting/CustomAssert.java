@@ -3,16 +3,13 @@ package reporting;
 import java.util.Map;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.PageFactory;
 import org.testng.asserts.Assertion;
 import org.testng.asserts.IAssert;
 import org.testng.collections.Maps;
 
 public class CustomAssert extends Assertion {
-	WebDriver driver;
-
-	public CustomAssert(WebDriver driver) {
-		this.driver = driver;
-	}
+	
 	private final Map<AssertionError, IAssert<?>> m_errors = Maps.newLinkedHashMap();
 
     public int getErrorsCount() {

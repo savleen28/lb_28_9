@@ -13,7 +13,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.stream.IntStream;
 
-public class Random {
+public class Random1 {
 	private static int shortRandAdd = 0;
     private static int longRandAdd = 0;
     private static int randFirstName = 0;
