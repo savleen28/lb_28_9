@@ -16,6 +16,7 @@ import utils.Random1;
 import Page.ActionBar;
 import Page.ConfirmationPage;
 import Page.ForgotPasswordPage;
+import Page.HomePage;
 import Page.SignInPage;
 import Page.SignUpPage1;
 import Page.SignUpStep2Page;
@@ -142,6 +143,10 @@ public class SignInUpTest extends BaseTest{
 		    ForgotPasswordPage forgotPasswordPage = signInPage.clickForgotPassword();
 		    customAssert.softAssertTrue(forgotPasswordPage.isPageOpened(), " 'Forgot password page' was not opened after clicking corresponding link.");
 		    new ActionBar().clickBackButton();
+		    new SignInPage().waitForPageToLoad().typeUsername(unverifiedEmail).typePassword(unverifiedPassword).clickSignIn();
+		    HomePage homepage = new HomePage();
+		    
+		    
 		    
 		    
 		    

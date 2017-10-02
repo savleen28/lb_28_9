@@ -71,6 +71,8 @@ public class config {
 	//ForgotPasswordPage
 	public static final String resetPasswordButton = "//*[@id=\"main\"]/section/div/form/input[2]";
 	public static final String resetEmailTextBox = "//*[@id=\"main\"]/section/div/form/input[1]";
+	//HomePage
+	public static final String unverifiedAccountMessage = "//*[@id=\"Content\"]/div[1]/div[2]";
 	
 	
 	
