@@ -42,6 +42,9 @@ public class SignInPage extends BasePage {
 
 	@FindBy(className = config.signUpLink)
 	public WebElement signUp;
+	
+	@FindBy(xpath = config.incorrectEmailErrorMessage)
+	public WebElement incorrectEmailError;
 
 	@Step
 	public SignInPage waitForPageToLoad() {
@@ -59,6 +62,7 @@ public class SignInPage extends BasePage {
 	@Step
 	public SignInPage typeUsername(String username) {
 		waitForElementVisibility(usernameInputField);
+		usernameInputField.clear();
 		type(username, usernameInputField);
 		return this;
 	}
@@ -66,6 +70,7 @@ public class SignInPage extends BasePage {
 	@Step
 	public SignInPage typePassword(String password) {
 		/* new SignInPage(). */showPasswordIfHidden();
+		passwordInputField.clear();
 		type(password, passwordInputField);
 
 		return this;
@@ -96,9 +101,9 @@ public class SignInPage extends BasePage {
 	}
 
 	@Step
-	public SignInPage clickForgotPassword() { // change the return type
+	public ForgotPasswordPage clickForgotPassword() { 
 		click(forgotPassword);
-		return this;
+		return PageFactory.initElements(driver(), ForgotPasswordPage.class);
 	}
 
 	@Step
@@ -145,6 +150,25 @@ public class SignInPage extends BasePage {
 			customAssert.fail("Can not check password input placeholder as it was not found.");
 		}
 		return this;
+	}
+	
+	
+	
+	
+	@Step
+	public boolean getIncorrectEmailErrorMessage(CustomAssert customAssert) {
+		if (isElementDisplayed(Constants.ELEMENT_30_TIMEOUT_SECONDS, incorrectEmailError)) {
+		String expectedMessage = "The email/username or password you entered is incorrect. Please verify your login details and try again.";
+		String actualMessage = incorrectEmailError.getText();
+		customAssert.softAssertTrue(expectedMessage.equals(actualMessage),
+				"Unexpected username field placeholder. Expected: '" + expectedMessage + "'. Actual: '" + actualMessage
+						+ "'.");
+		}
+		else {
+			customAssert.fail("Can not check Email error message as it was not found.");
+			return false;
+		}
+		return true;
 	}
 
 }

@@ -1,4 +1,5 @@
-/*package utils;
+
+package utils;
 
 import org.apache.http.HttpStatus;
 import org.apache.http.HttpStatus;
@@ -256,7 +257,8 @@ public class Mail {
 
     // Profile Email exchange
 
-    public static void confirmProfileEmailUpdate(String login, String password, String sentEmail) {
+    public static /*void*/String confirmProfileEmailUpdate(String login, String password, String sentEmail) {
+    	String confLink ="";
         try {
             connect(login, password, getHostByEmail(login));
             long startTime = System.currentTimeMillis();
@@ -264,17 +266,20 @@ public class Mail {
                 BaseActions.wait(5);
             }
             Debugger.Logger.info("Was email found? : " + isLinkConfirmed(sentEmail));
+            confLink = getConfirmationLink(sentEmail);
             disconnect();
             Debugger.Logger.info("Disconnected");
         } catch (MessagingException mse) {
             mse.printStackTrace();
-            return;
+            //return;
         }
+        return confLink;
     }
 
     public static boolean isLinkConfirmed(String recipient){
         boolean status = false;
         try {
+        	
             Debugger.Logger.info("Try to confirm the email");
             String content = "";
             String confirmationLink = "";
@@ -317,13 +322,80 @@ public class Mail {
         return status;
     }
 
+    public static String getConfirmationLink(String recipient) {
+    	// boolean status = false;
+    	 String confirmationLink = "";
+         try {
+         	
+             Debugger.Logger.info("Try to confirm the email");
+             String content = "";
+             
+             int responseCode;
+             openedFolder = store.getFolder("Inbox");
+             openedFolder.open(Folder.READ_WRITE);
+             Message messages[] = openedFolder.getMessages();
+             Debugger.Logger.info("  emails count: " + messages.length);
+             if (messages.length == 0) {
+                 return null;
+             }
+             for (int i=messages.length-1; i>=0; i--){
+                 Message msg = messages[i];
+                 Debugger.Logger.info(getRecipient(msg) + " : " + recipient);
+                 if (getRecipient(msg).equals(recipient)) {
+                     content = getEmailContent(msg);
+                     if (content.isEmpty()) {
+                         Debugger.Logger.error("Content was empty");
+                         continue;
+                     }
+                     Debugger.Logger.info("content : " + content);
+
+                     confirmationLink = parseEmailConfirmationLink(content);
+                     if (confirmationLink.isEmpty()) {
+                         Debugger.Logger.error("Confirmation link was not found");
+                         continue;
+                     }
+                     Debugger.Logger.info("confirmationLink : " + confirmationLink);
+                     responseCode = confirmationLinkRequest(confirmationLink);
+                     if (responseCode == HttpStatus.SC_OK) {
+                         //status = true;
+                         Debugger.Logger.info("HttpStatus : OK");
+                         break;
+                     }
+                 }
+             }
+         } catch (MessagingException e) {
+             e.printStackTrace();
+         }
+         return confirmationLink;
+    	
+    }
 
     public static int confirmationLinkRequest(String path) {
         try {
+        	boolean redirect = false;
             URL url = new URL(path);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             int responseCode = conn.getResponseCode();
+            
             Debugger.Logger.info("Confirmation Link Request Response Code : " + responseCode);
+            
+            if (responseCode != HttpURLConnection.HTTP_OK) {
+        		if (responseCode == HttpURLConnection.HTTP_MOVED_TEMP
+        			|| responseCode == HttpURLConnection.HTTP_MOVED_PERM
+        				|| responseCode == HttpURLConnection.HTTP_SEE_OTHER)
+        		redirect = true;
+        	}
+            
+            if (redirect) {
+           
+        		// get redirect url from "location" header field
+        		String newUrl = conn.getHeaderField("Location");
+        		conn = (HttpURLConnection) new URL(newUrl).openConnection();
+        		responseCode = conn.getResponseCode();
+        		 Debugger.Logger.info("Confirmation Link Request Response Code from the redirected link : " + responseCode);
+            }
+            
+           
             conn.disconnect();
             return responseCode;
         } catch (MalformedURLException e) {
@@ -338,4 +410,3 @@ public class Mail {
 
 }
 
-*/

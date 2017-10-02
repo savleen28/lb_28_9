@@ -59,6 +59,11 @@ public class StartPage extends BasePage{
       click(signInButton);
       return PageFactory.initElements(driver(), SignInPage.class);
     }
+    
+    public SignUpPage1 click10DayTrialButton() {
+       click(trialButton);
+        return PageFactory.initElements(driver(), SignUpPage1.class);
+      }
 	
 	
 	

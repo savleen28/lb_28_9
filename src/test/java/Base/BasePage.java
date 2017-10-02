@@ -64,6 +64,10 @@ public class BasePage extends BaseTest {
 	}
 
 	@Step
+	public void navigateBackButton() {
+		driver.navigate().back();
+	}
+	@Step
 	public boolean isElementPresent(int timeout, WebElement Element) {
 		try {
 			waitForElementVisibility(timeout, Element);

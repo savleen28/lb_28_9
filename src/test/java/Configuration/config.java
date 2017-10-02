@@ -12,6 +12,7 @@ public class config {
 	public static final String rememberMeCheckBox = "//*[@id=\"remember\"]";
 	public static final String forgotPasswordLink = "//*[@id=\"form\"]/a";
 	public static final String signUpLink = "lb-link";
+	public static final String incorrectEmailErrorMessage = "//*[@id=\"form\"]/div";
 	//Start Page
 	public static final String signInButton = "Sign in";
 	public static final String trialButton = "//*[@id=\"main-menu\"]/li[7]/a";
@@ -67,6 +68,9 @@ public class config {
 	public static final String updateEmailTextBox = "//*[@id=\"signup--forms\"]/form[1]/div/input[1]";
 	public static final String updateEmailButton = "//*[@id=\"signup--forms\"]/form[1]/div/input[2]";
 	public static final String updateEmailText = "//div[@class='resend-message valid']/p";
+	//ForgotPasswordPage
+	public static final String resetPasswordButton = "//*[@id=\"main\"]/section/div/form/input[2]";
+	public static final String resetEmailTextBox = "//*[@id=\"main\"]/section/div/form/input[1]";
 	
 	
 	

@@ -29,13 +29,15 @@ public class DataPoolReader {
     private static final String XML_CREDENTIALS_TAG = "credentials";
     private static final String XML_CREDENTIALS_TAG_NAME_ATTR = "name";
     private static final String XML_ARG_TAG = "arg";
+    private static final String path = "C:\\Users\\SavleenB\\git\\lb_28_9\\config";
     Document datapool;
     String filePath;
     List<Node> data;
 
     public DataPoolReader() {
         try {
-            filePath = Paths.get(Properties.getConfigDir(), DATAPOOL_NAME).toString();
+            filePath = Paths.get(path, DATAPOOL_NAME).toString();
+           
             datapool = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(filePath);
             datapool.getDocumentElement().normalize();
 

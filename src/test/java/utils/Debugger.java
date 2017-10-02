@@ -1,5 +1,8 @@
-/*package utils;
+package utils;
 
+import Base.BasePage;
+
+//import com.qatestlab.reporting.Attachments;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -16,8 +19,6 @@ import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-
-import Base.BasePage;
 
 public class Debugger {
 
@@ -50,7 +51,7 @@ public class Debugger {
     }
 
     public static void printPageContent(){
-       // printFile(Attachments.dumpPageXML());
+        //printFile(Attachments.dumpPageXML());
     }
 
 
@@ -84,11 +85,11 @@ public class Debugger {
 
     public static String geAllElements() {
         List<WebElement> els = BasePage.driver().findElements(By.xpath("//*"));
-        return "All elements count = " + els.size();
+         return "All elements count = " + els.size();
     }
 
     public static void dumpAllElements() {
-    	 List<WebElement> els = BasePage.driver().findElements(By.xpath("//*"));
+        List<WebElement> els = BasePage.driver().findElements(By.xpath("//*"));
         Logger.info("All elements count = " + els.size());
     }
 
@@ -141,7 +142,7 @@ public class Debugger {
         }
 
         public static void printRunInfo() {
-            print("~~~~~~~~~~~~~~~~ Run info ~~~~~~~~~~~~~~~~");
+            /*print("~~~~~~~~~~~~~~~~ Run info ~~~~~~~~~~~~~~~~");
             print("Date/Time: " + getZTime());
             print("Platform: " + Properties.getPlatform());
             print("Product build info: " + Properties.buildInfo);
@@ -153,7 +154,7 @@ public class Debugger {
                 print("Run name: " + Properties.getRunName());
             }
             print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-        }
+        }*/
     }
 
 
@@ -200,10 +201,9 @@ public class Debugger {
     }
 
     public static void getCapabilityValue(String capName) {
-        String capValue = BasePage.driver().getCapabilities().getCapability(capName) != null
+        /*String capValue = BasePage.driver().getCapabilities().getCapability(capName) != null
                 ? BasePage.driver().getCapabilities().getCapability(capName).toString() : "";
-        Logger.info("Capability " + capName + " = " + capValue);
+        Logger.info("Capability " + capName + " = " + capValue);*/
     }
 }
-
-*/
+}
