@@ -71,8 +71,13 @@ public class config {
 	//ForgotPasswordPage
 	public static final String resetPasswordButton = "//*[@id=\"main\"]/section/div/form/input[2]";
 	public static final String resetEmailTextBox = "//*[@id=\"main\"]/section/div/form/input[1]";
+	public static final String resetPasswordInstructions = "//*[@id=\"main\"]/section/div/div/p[2]";  
+	public static final String invalidEmailErrorMessage = "//*[@id=\"main\"]/section/div/form/div";
 	//HomePage
 	public static final String unverifiedAccountMessage = "//*[@id=\"Content\"]/div[1]/div[2]";
+	public static final String logoutDropdown = "//*[@id=\"topAccountMenu\"]/div[1]";
+	public static final String logoutButton = "//*[@id=\"divAccountPopup\"]/div/ul/li[4]";
+	public static final String loadSearchLink = "//*[@id=\"divDashboard\"]/a[1]/span[1]";
 	
 	
 	

@@ -17,6 +17,15 @@ public class HomePage extends BasePage{
 	 @FindBy(xpath = config.unverifiedAccountMessage)
 	 public WebElement unverifiedAccMessage;
 	 
+	 @FindBy(xpath = config.logoutDropdown)
+	 public WebElement dropdown;
+	 
+	 @FindBy(xpath = config.logoutButton)
+	 public WebElement logout;
+	 
+	 @FindBy(xpath = config.loadSearchLink)
+	 public WebElement loadSearch;
+	 
 	 
 	 @Step
 		public boolean checkUnverifiedAccountMessage(CustomAssert customAssert) {
@@ -33,4 +42,29 @@ public class HomePage extends BasePage{
 			}
 			return true;
 		}
+	 
+	 @Step
+	  public HomePage clickLogoutDropdown(){
+		 click(dropdown);
+		 return this;
+	 }
+	 
+	 @Step
+	 public StartPage clickLogout() {
+		 click(logout);
+		 return PageFactory.initElements(driver(), StartPage.class);
+	 }
+	 
+	 @Step
+	    public boolean isPageOpened() {
+	        return isPageOpened(Constants.ELEMENT_30_TIMEOUT_SECONDS);
+	    }
+
+	    @Step
+	    public boolean isPageOpened(int timeout) {
+	        Boolean promise = isElementPresent(timeout, loadSearch);
+	        //Attachments.takeScreenshot();
+	        return promise;
+	    }
+	    
 }

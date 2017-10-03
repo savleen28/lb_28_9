@@ -86,10 +86,10 @@ public class SignInPage extends BasePage {
 	}
 
 	@Step
-	public SignInPage clickSignIn() {
+	public HomePage clickSignIn() {
 		click(signInButton);
 		wait(5);
-		return this;
+		return PageFactory.initElements(driver(), HomePage.class);
 	}
 
 	@Step
