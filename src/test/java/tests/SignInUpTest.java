@@ -30,7 +30,7 @@ import Base.BaseTest;
 import utils.Mail;
 
 public class SignInUpTest extends BaseTest{
-	@Title("TST-423")
+	/*@Title("TST-423")
 	@Test(testName = "TST-423", description = "Sign In screen (Functional), 'Signing In in 123Loadboard.'")
 	public void signUpScreenFunctional() throws InterruptedException {
 		CustomAssert customAssert = new CustomAssert();
@@ -60,21 +60,21 @@ public class SignInUpTest extends BaseTest{
         //Mail mail = new Mail();
         Thread.sleep(60000L);
         Mail.confirmProfileEmailUpdate("qa@test.123loadboard.us","tKj7tQjd1Gkrdu7K",unverifiedEmail);
-        /*StartPage startPage1 = new StartPage();
+        StartPage startPage1 = new StartPage();
 		SignInPage signInPage1 = startPage.clickSignInButton();
 		signInPage1.typeUsername(unverifiedEmail).typePassword(unverifiedPassword).clickSignIn();
-        */
         
         
-       }
+        
+       }*/
 	
 	/*public static void main(String[] args) {
 		String unverifiedEmail = "qa26756966@test.123loadboard.us";
 		 Mail.confirmProfileEmailUpdate("qa@test.123loadboard.us","tKj7tQjd1Gkrdu7K",unverifiedEmail);
 	}*/
 	
-	/*@Title("TST-424")
-	@Test(testName = "TST-424", description = "Sign In screen (Functional) and check confirmation details, 'Signing In in 123Loadboard.'")
+	/*@Title("TST-427")
+	@Test(testName = "TST-427", description = "Sign In screen (Functional) and check confirmation details, 'Signing In in 123Loadboard.'")
 	public static void signUpConfirmation() {
 		CustomAssert customAssert = new CustomAssert();
 		StartPage startPage = new StartPage();
@@ -109,8 +109,8 @@ public class SignInUpTest extends BaseTest{
         
 	}*/
 	
-	/*@Title("TST-3")
-	@Test(testName = "TST-3", dataProvider = DataProviderPool.NO_ADDON_CREDENTIALS, dataProviderClass = DataProviderPool.class, description = "Sign In screen (Functional), 'Signing In in 123Loadboard.'")
+	/*@Title("TST-424")
+	@Test(testName = "TST-424", dataProvider = DataProviderPool.NO_ADDON_CREDENTIALS, dataProviderClass = DataProviderPool.class, description = "Sign In screen (Functional), 'Signing In in 123Loadboard.'")
 	public static void signInFunctional(String login,String password) {
 		CustomAssert customAssert = new CustomAssert();
 		StartPage startPage = new StartPage();
@@ -196,5 +196,28 @@ public class SignInUpTest extends BaseTest{
 		
 	}*/
 	
+	@Title("TST-6")
+	@Test(testName = "TST-6",description = "Sign Out (Functional), 'Signing out from application.'", dataProvider = DataProviderPool.VERIFIED_CREDENTIALS, dataProviderClass = DataProviderPool.class)
+	public void signUpWithExistingIdTest(String login, String password) {
+		 String firstName = "FirstName" + Random1.genFirstNameRandomNo();
+			String lastName = "LastName" + Random1.genLastNameRandomNo();
+			String unverifiedEmail = "qa" + Random1.genShortRandNumber() + "@test.123loadboard.us";
+			String unverifiedPassword = "password";
+	        String phoneNumber = "8005551212";
+		CustomAssert customAssert = new CustomAssert();
+		StartPage startPage = new StartPage();
+		SignInPage signInPage = startPage.clickSignInButton();
+		SignUpPage1 signUpPage = signInPage.clickSignUpLink();
+		signUpPage.clickSignUpButton();
+		signUpPage.checkEmailRequiredErrorMessage(customAssert).checkPasswordRequiredErrorMessage(customAssert)
+		.checkFirstNameRequiredErrorMessage(customAssert).checkLastNameRequiredErrorMessage(customAssert).checkPhoneNoNameRequiredErrorMessage(customAssert);
+		signUpPage.typeEmail(unverifiedEmail).typeFirstName(firstName).typeLastName(lastName)
+		.typePhoneNumber(phoneNumber).clickSignUpButton();
+		signUpPage.checkPasswordRequiredErrorMessage(customAssert);
+		signUpPage.typeEmail("").typePassword(unverifiedPassword).typeFirstName(firstName).typeLastName(lastName).typePhoneNumber(phoneNumber).clickSignUpButton();
+		signUpPage.checkEmailRequiredErrorMessage(customAssert);
+		
+		customAssert.assertAll();
+	}
 
 }

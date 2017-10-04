@@ -49,10 +49,25 @@ public class SignUpPage1 extends BasePage  {
 	@FindBy(xpath = config.phoneNumberTextBox)
 	public WebElement phoneNumber;
 	
-
+	@FindBy(xpath = config.welcomeBackMessage)
+	public WebElement welcomeBack;
 	
-
-	//BasePage basePage = PageFactory.initElements(driver, BasePage.class);
+	@FindBy(xpath = config.emailErrorMessage)
+	public WebElement emailRequired;
+	
+	@FindBy(xpath = config.passwordErrorMessage)
+	public WebElement passwordRequired;
+	
+	@FindBy(xpath = config.firstNameErrorMessage)
+	public WebElement firstNameRequired;
+	
+	@FindBy(xpath = config.lastNameErrorMessage)
+	public WebElement lastNameRequired;
+	
+	@FindBy(xpath = config.phoneNoErrorMessage)
+	public WebElement phoneNoRequired;
+	
+   //BasePage basePage = PageFactory.initElements(driver, BasePage.class);
 
 	@Step
 	public boolean isPageOpened() {
@@ -191,6 +206,7 @@ public class SignUpPage1 extends BasePage  {
 	 @Step
 	    public SignUpPage1 typeEmail(String emailInput) {
 	        CustomAssert.hardAssertTrue(isElementDisplayed(Constants.ELEMENT_30_TIMEOUT_SECONDS, email), "Can not type email as corresponding input was not found.");
+	        email.clear();
 	        type(emailInput, email);
 	        return this;
 	    }
@@ -198,6 +214,7 @@ public class SignUpPage1 extends BasePage  {
 	 @Step
 	    public SignUpPage1 typePassword(String passwordInput) {
 	        CustomAssert.hardAssertTrue(isElementDisplayed(Constants.ELEMENT_30_TIMEOUT_SECONDS, password), "Can not type password as corresponding input was not found.");
+	        password.clear();
 	        type(passwordInput, password);
 	        return this;
 	    }
@@ -205,6 +222,7 @@ public class SignUpPage1 extends BasePage  {
 	 @Step
 	    public SignUpPage1 typeFirstName(String firstNameInput) {
 	       CustomAssert.hardAssertTrue(isElementDisplayed(Constants.ELEMENT_30_TIMEOUT_SECONDS, firstName), "Can not type first name as corresponding input was not found.");
+	       firstName.clear();
 	        type(firstNameInput, firstName);
 	        return this;
 	    }
@@ -212,6 +230,7 @@ public class SignUpPage1 extends BasePage  {
 	 @Step
 	    public SignUpPage1 typeLastName(String lastNameInput) {
 	        CustomAssert.hardAssertTrue(isElementDisplayed(Constants.ELEMENT_30_TIMEOUT_SECONDS, lastName), "Can not type last name as corresponding input was not found.");
+	        lastName.clear();
 	        type(lastNameInput, lastName);
 	        return this;
 	    }
@@ -219,13 +238,15 @@ public class SignUpPage1 extends BasePage  {
 	 @Step
 	    public SignUpPage1 typeCompanyName(String companyNameInput) {
 	       CustomAssert.hardAssertTrue(isElementDisplayed(Constants.ELEMENT_30_TIMEOUT_SECONDS, companyName), "Can not type company name as corresponding input was not found.");
+	       companyName.clear();
 	        type(companyNameInput, companyName);
 	        return this;
 	    }
 	 
 	 @Step
 	    public SignUpPage1 typePhoneNumber(String phoneNumberInput) {
-	        CustomAssert.hardAssertTrue(isElementDisplayed(Constants.ELEMENT_30_TIMEOUT_SECONDS, companyName), "Can not type company name as corresponding input was not found.");
+	        CustomAssert.hardAssertTrue(isElementDisplayed(Constants.ELEMENT_30_TIMEOUT_SECONDS, phoneNumber), "Can not type company name as corresponding input was not found.");
+	        phoneNumber.clear();
 	        type(phoneNumberInput, phoneNumber);
 	        return this;
 	    }
@@ -252,6 +273,81 @@ public class SignUpPage1 extends BasePage  {
 	    public SignUpStep2Page clickSignUpButton() {
 	      click(nextStep);
 	      return PageFactory.initElements(driver(), SignUpStep2Page.class);
+	    }
+	 
+	 @Step
+	    public SignUpPage1 checkEmailRequiredErrorMessage(CustomAssert customAssert) {
+	       
+	        if (isElementDisplayed(Constants.ELEMENT_30_TIMEOUT_SECONDS, emailRequired)) {
+	            
+	            String expectedText = config.emailRequiredMessage;
+	            String actualText = emailRequired.getText();
+	            customAssert.softAssertTrue(expectedText.equals(actualText),
+	                    "Unexpected email error message. Expected: '" + expectedText + "'. Actual: '" + actualText + "'.");
+	        } else {
+	            customAssert.fail("Can not check email error message as it was not found.");
+	        }
+	        return this;
+	    }
+	 
+	 @Step
+	    public SignUpPage1 checkPasswordRequiredErrorMessage(CustomAssert customAssert) {
+	       
+	        if (isElementDisplayed(Constants.ELEMENT_30_TIMEOUT_SECONDS, passwordRequired)) {
+	            
+	            String expectedText = config.passwordRequiredMessage;
+	            String actualText = passwordRequired.getText();
+	            customAssert.softAssertTrue(expectedText.equals(actualText),
+	                    "Unexpected password error message. Expected: '" + expectedText + "'. Actual: '" + actualText + "'.");
+	        } else {
+	            customAssert.fail("Can not check password error message as it was not found.");
+	        }
+	        return this;
+	    }
+	 
+	 @Step
+	    public SignUpPage1 checkFirstNameRequiredErrorMessage(CustomAssert customAssert) {
+	       
+	        if (isElementDisplayed(Constants.ELEMENT_30_TIMEOUT_SECONDS, firstNameRequired)) {
+	            
+	            String expectedText = config.firstNameRequiredMessage;
+	            String actualText = firstNameRequired.getText();
+	            customAssert.softAssertTrue(expectedText.equals(actualText),
+	                    "Unexpected first name error message. Expected: '" + expectedText + "'. Actual: '" + actualText + "'.");
+	        } else {
+	            customAssert.fail("Can not check first name error message as it was not found.");
+	        }
+	        return this;
+	    }
+	 
+	 @Step
+	    public SignUpPage1 checkLastNameRequiredErrorMessage(CustomAssert customAssert) {
+	       
+	        if (isElementDisplayed(Constants.ELEMENT_30_TIMEOUT_SECONDS, lastNameRequired)) {
+	            
+	            String expectedText = config.lastNameRequiredMessage;
+	            String actualText = lastNameRequired.getText();
+	            customAssert.softAssertTrue(expectedText.equals(actualText),
+	                    "Unexpected last name error message. Expected: '" + expectedText + "'. Actual: '" + actualText + "'.");
+	        } else {
+	            customAssert.fail("Can not check last name error message as it was not found.");
+	        }
+	        return this;
+	    }
+	 
+	 @Step
+	    public SignUpPage1 checkPhoneNoNameRequiredErrorMessage(CustomAssert customAssert) {
+	       
+	        if (isElementDisplayed(Constants.ELEMENT_30_TIMEOUT_SECONDS, phoneNoRequired)) {
+	            
+	            String expectedText = config.phoneNumberRequiredMessage;
+	            String actualText = phoneNoRequired.getText();
+	            customAssert.softAssertTrue(expectedText.equals(actualText),
+	                    "Unexpected phone number error message. Expected: '" + expectedText + "'. Actual: '" + actualText + "'.");
+	        } else {
+	            customAssert.fail("Can not check phone number error message as it was not found.");
+	        }
+	        return this;
 	    }
 
 }

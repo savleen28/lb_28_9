@@ -26,6 +26,13 @@ public class config {
 	public static final String lastNameTextBox = "//*[@id=\"signup--forms\"]/form/section[3]/input[2]";
 	public static final String companyNameTextBox = "//*[@id=\"signup--forms\"]/form/section[3]/input[3]";
 	public static final String phoneNumberTextBox = "//*[@id=\"signup--forms\"]/form/section[3]/input[4]";
+	public static final String welcomeBackMessage = "//*[@id=\"duplicate-email\"]/h3";
+	public static final String emailErrorMessage = "//*[@id=\"signup--forms\"]/form/section[1]/div[1]";
+	public static final String passwordErrorMessage = "//*[@id=\"signup--forms\"]/form/section[1]/div[2]";
+	
+	public static final String firstNameErrorMessage = "//*[@id=\"signup--forms\"]/form/section[3]/div[1]";
+	public static final String lastNameErrorMessage = "//*[@id=\"signup--forms\"]/form/section[3]/div[2]";
+	public static final String phoneNoErrorMessage = "//*[@id=\"signup--forms\"]/form/section[3]/div[3]";
 	//SignUpStep2Page
 	public static final String selectStandardPlanButton = "//*[@id=\"plansContainer\"]/section/div/div[1]/div[1]/div/a[1]";
 	public static final String selectPremiunmPlanButton ="//*[@id=\"plansContainer\"]/section/div/div[1]/div[2]/div/ul";
@@ -78,6 +85,14 @@ public class config {
 	public static final String logoutDropdown = "//*[@id=\"topAccountMenu\"]/div[1]";
 	public static final String logoutButton = "//*[@id=\"divAccountPopup\"]/div/ul/li[4]";
 	public static final String loadSearchLink = "//*[@id=\"divDashboard\"]/a[1]/span[1]";
+	//SignUpPage Error Messages
+	public static final String emailRequiredMessage = "Email Address is required";
+	public static final String passwordRequiredMessage = "Password (min. 6 characters) is required";
+	public static final String firstNameRequiredMessage = "First Name is required";
+	public static final String lastNameRequiredMessage = "Last Name is required";
+	public static final String phoneNumberRequiredMessage = "Phone Number is not valid";
+	
+	
 	
 	
 	
