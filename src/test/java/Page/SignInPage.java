@@ -45,6 +45,9 @@ public class SignInPage extends BasePage {
 	
 	@FindBy(xpath = config.incorrectEmailErrorMessage)
 	public WebElement incorrectEmailError;
+	
+	@FindBy(xpath = config.myAccountLink)
+	public WebElement myAccount;
 
 	@Step
 	public SignInPage waitForPageToLoad() {
@@ -169,6 +172,12 @@ public class SignInPage extends BasePage {
 			return false;
 		}
 		return true;
+	}
+	
+	@Step
+	public HomePage clickMyAccount() {
+		click(myAccount);
+		return PageFactory.initElements(driver(), HomePage.class);
 	}
 
 }

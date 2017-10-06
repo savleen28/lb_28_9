@@ -8,6 +8,9 @@ import Configuration.config;
 import ru.yandex.qatools.allure.annotations.Step;
 import utils.Constants;
 import Base.BasePage;
+
+import java.util.Set;
+
 import org.openqa.selenium.*;
 import reporting.CustomAssert;
 
@@ -74,6 +77,51 @@ public class SignUpStep2Page extends BasePage{
 	
 	@FindBy(xpath = config.faqClick6)
 	public WebElement faq6;
+	
+	@FindBy(xpath = config.promoCodeEmptyErrMessage)
+	public WebElement promoCodeEmptyError;
+	
+	@FindBy(xpath = config.nameOnCardEmptyErrMessage)
+	public WebElement nameOnCardEmpty;
+	
+	@FindBy(xpath = config.cardNoEmptyErrMessage)
+	public WebElement cardNoEmpty;
+	
+	@FindBy(xpath = config.monthEmptyErrMessage)
+	public WebElement monthEmptyMessage;
+	
+	@FindBy(xpath = config.yearEmptyErrMessage)
+	public WebElement yearEmptyMessage;
+	
+	@FindBy(xpath = config.cscEmptyErrorMessage)
+	public WebElement cscEmptyMessage;
+	
+	@FindBy(xpath = config.termsNotSelectedErrMessage)
+	public WebElement termsNotSelectedMessage;
+	
+	@FindBy(xpath = config.termsOfServiceLink)
+	public WebElement termsOfService;
+	
+	@FindBy(xpath = config.privacyPolicyLink)
+	public WebElement privacyPolicy;
+	
+	@FindBy(xpath = config.standardPriceText)
+	public WebElement standardPrice;
+	
+	@FindBy(xpath = config.premiumPriceText)
+	public WebElement premiumPrice;
+	
+	@FindBy(xpath =config.premiumPlusPriceText)
+	public WebElement premiumPlusPrice;
+	
+	@FindBy(xpath = config.standardTrialPeriod)
+	public WebElement standardTrial;
+	
+	@FindBy(xpath = config.premiumTrialPeriod)
+	public WebElement premiumTrial;
+	
+	@FindBy(xpath = config.premiumPlusTrialPeriod)
+	public WebElement premiumPlusTrial;
 	
 	
 	
@@ -326,7 +374,7 @@ public class SignUpStep2Page extends BasePage{
 	        return this;
 	    }
 	 
-     @Step
+    /* @Step
 	    public SignUpStep2Page checkEnteredInfoAndClickPromoCoden(CustomAssert customAssert,String promoCodeEntered, String nameOnCardEntered, String cardNoEntered, String monthEntered, String yearEntered, String cscEntered) {
 		 click(promoCodeClick);
 		 customAssert.assertEquals(promoCode.getAttribute("value"), promoCodeEntered, "Promo Code input text was not correct.");
@@ -337,8 +385,211 @@ public class SignUpStep2Page extends BasePage{
 		 customAssert.assertEquals(selectYear.getAttribute("value"), yearEntered, "Year input text was not correct.");
 		 customAssert.assertEquals(csc.getAttribute("value"), cscEntered, "Year input text was not correct.");
 		 return this;
+	    }*/
+	 
+	 @Step
+	    public SignUpStep2Page checkPromoCodeEmptyErrorMessage(CustomAssert customAssert) {
+	       
+	        if (isElementDisplayed(Constants.ELEMENT_30_TIMEOUT_SECONDS, promoCodeEmptyError)) {
+	            
+	            String expectedText = config.promoCodeEmptyMessage;
+	            String actualText = promoCodeEmptyError.getText();
+	            customAssert.softAssertTrue(expectedText.equals(actualText),
+	                    "Unexpected promo code empty error message. Expected: '" + expectedText + "'. Actual: '" + actualText + "'.");
+	        } else {
+	            customAssert.fail("Can not check name on card empty error message as it was not found.");
+	        }
+	        return this;
 	    }
 	 
+	 @Step
+	    public SignUpStep2Page checkNameOnCardEmptyErrorMessage(CustomAssert customAssert) {
+	       
+	        if (isElementDisplayed(Constants.ELEMENT_30_TIMEOUT_SECONDS, nameOnCardEmpty)) {
+	            
+	            String expectedText = config.nameOnCardEmptyMessage;
+	            String actualText = nameOnCardEmpty.getText();
+	            customAssert.softAssertTrue(expectedText.equals(actualText),
+	                    "Unexpected promo code empty error message. Expected: '" + expectedText + "'. Actual: '" + actualText + "'.");
+	        } else {
+	            customAssert.fail("Can not check name on card empty error message as it was not found.");
+	        }
+	        return this;
+	    }
+	 
+	 @Step
+	    public SignUpStep2Page checkCardNoEmptyErrorMessage(CustomAssert customAssert) {
+	       
+	        if (isElementDisplayed(Constants.ELEMENT_30_TIMEOUT_SECONDS, cardNoEmpty)) {
+	            
+	            String expectedText = config.cardNoEmptyMessage;
+	            String actualText = cardNoEmpty.getText();
+	            customAssert.softAssertTrue(expectedText.equals(actualText),
+	                    "Unexpected card number empty error message. Expected: '" + expectedText + "'. Actual: '" + actualText + "'.");
+	        } else {
+	            customAssert.fail("Can not check card number empty error message as it was not found.");
+	        }
+	        return this;
+	    }
+	 
+	 @Step
+	    public SignUpStep2Page checkMonthErrorMessage(CustomAssert customAssert) {
+	       
+	        if (isElementDisplayed(Constants.ELEMENT_30_TIMEOUT_SECONDS, monthEmptyMessage)) {
+	            
+	            String expectedText = config.monthEmptyMessage;
+	            String actualText = monthEmptyMessage.getText();
+	            customAssert.softAssertTrue(expectedText.equals(actualText),
+	                    "Unexpected month empty error message. Expected: '" + expectedText + "'. Actual: '" + actualText + "'.");
+	        } else {
+	            customAssert.fail("Can not check month empty error message as it was not found.");
+	        }
+	        return this;
+	    }
+	 
+	 @Step
+	    public SignUpStep2Page checkYearErrorMessage(CustomAssert customAssert) {
+	       
+	        if (isElementDisplayed(Constants.ELEMENT_30_TIMEOUT_SECONDS, yearEmptyMessage)) {
+	            
+	            String expectedText = config.yearEmptyMessage;
+	            String actualText = yearEmptyMessage.getText();
+	            customAssert.softAssertTrue(expectedText.equals(actualText),
+	                    "Unexpected year empty error message. Expected: '" + expectedText + "'. Actual: '" + actualText + "'.");
+	        } else {
+	            customAssert.fail("Can not check year empty error message as it was not found.");
+	        }
+	        return this;
+	    }
+	 
+	 @Step
+	    public SignUpStep2Page checkCscErrorMessage(CustomAssert customAssert) {
+	       
+	        if (isElementDisplayed(Constants.ELEMENT_30_TIMEOUT_SECONDS, cscEmptyMessage)) {
+	            
+	            String expectedText = config.cscEmptyMessage;
+	            String actualText = cscEmptyMessage.getText();
+	            customAssert.softAssertTrue(expectedText.equals(actualText),
+	                    "Unexpected csc empty error message. Expected: '" + expectedText + "'. Actual: '" + actualText + "'.");
+	        } else {
+	            customAssert.fail("Can not check csc empty error message as it was not found.");
+	        }
+	        return this;
+	    }
+	 
+	 @Step
+	    public SignUpStep2Page checkTermsNotSelectedErrorMessage(CustomAssert customAssert) {
+	       
+	        if (isElementDisplayed(Constants.ELEMENT_30_TIMEOUT_SECONDS, termsNotSelectedMessage)) {
+	            
+	            String expectedText = config.termsNotSelectedMessage;
+	            String actualText = termsNotSelectedMessage.getText();
+	            customAssert.softAssertTrue(expectedText.equals(actualText),
+	                    "Unexpected terms not selected error message. Expected: '" + expectedText + "'. Actual: '" + actualText + "'.");
+	        } else {
+	            customAssert.fail("Can not check terms not selected error message as it was not found.");
+	        }
+	        return this;
+	    }
+	 
+	 @Step
+	    public SignUpStep2Page checkTermsAndPrivacyTabOpened(CustomAssert customAssert) {
+		 click(termsOfService);
+		 click(privacyPolicy);
+		 Set<String> handles = driver.getWindowHandles();
+		 customAssert.softAssertEqualExpectedActual(String.valueOf(handles.size()), "3", "Terms of Service/Privacy Policy window is not opened.");
+		 return this;
+	 }
+	 
+	 @Step
+	    public SignUpStep2Page checkStandardPriceAferPromoCode(CustomAssert customAssert) {
+	       
+	        if (isElementDisplayed(Constants.ELEMENT_30_TIMEOUT_SECONDS, standardPrice)) {
+	            
+	            String expectedText = config.standardPrice;
+	            String actualText = standardPrice.getText();
+	            customAssert.softAssertTrue(expectedText.equals(actualText),
+	                    "Unexpected Standard Price displayed after applying promo code. Expected: '" + expectedText + "'. Actual: '" + actualText + "'.");
+	        } else {
+	            customAssert.fail("Can not check Standard Price displayed after applying promo code as it was not found.");
+	        }
+	        return this;
+	    }
+	 
+	 @Step
+	    public SignUpStep2Page checkPremiumPriceAferPromoCode(CustomAssert customAssert) {
+	       
+	        if (isElementDisplayed(Constants.ELEMENT_30_TIMEOUT_SECONDS, premiumPrice)) {
+	            
+	            String expectedText = config.premiumPrice;
+	            String actualText = premiumPrice.getText();
+	            customAssert.softAssertTrue(expectedText.equals(actualText),
+	                    "Unexpected Premium Price displayed after applying promo code. Expected: '" + expectedText + "'. Actual: '" + actualText + "'.");
+	        } else {
+	            customAssert.fail("Can not check Premium Price displayed after applying promo code as it was not found.");
+	        }
+	        return this;
+	    }
+	 
+	 @Step
+	    public SignUpStep2Page checkPremiumPlusPriceAferPromoCode(CustomAssert customAssert) {
+	       
+	        if (isElementDisplayed(Constants.ELEMENT_30_TIMEOUT_SECONDS, premiumPlusPrice)) {
+	            
+	            String expectedText = config.premiumPlusPrice;
+	            String actualText = premiumPlusPrice.getText();
+	            customAssert.softAssertTrue(expectedText.equals(actualText),
+	                    "Unexpected Premium Plus Price displayed after applying promo code. Expected: '" + expectedText + "'. Actual: '" + actualText + "'.");
+	        } else {
+	            customAssert.fail("Can not check Premium Plus Price displayed after applying promo code as it was not found.");
+	        }
+	        return this;
+	    }
+	 
+	 @Step
+	    public SignUpStep2Page checkStandardTrialPeriodAferPromoCode(CustomAssert customAssert) {
+	       
+	        if (isElementDisplayed(Constants.ELEMENT_30_TIMEOUT_SECONDS, standardTrial)) {
+	            
+	            String expectedText = config.trialPeriodText;
+	            String actualText = standardTrial.getText();
+	            customAssert.softAssertTrue(expectedText.equals(actualText),
+	                    "Unexpected standard trial period after applying promo code. Expected: '" + expectedText + "'. Actual: '" + actualText + "'.");
+	        } else {
+	            customAssert.fail("Can not check standard trial period after applying promo code as it was not found.");
+	        }
+	        return this;
+	    }
+	 
+	 @Step
+	    public SignUpStep2Page checkPremiumTrialPeriodAferPromoCode(CustomAssert customAssert) {
+	       
+	        if (isElementDisplayed(Constants.ELEMENT_30_TIMEOUT_SECONDS, premiumTrial)) {
+	            
+	            String expectedText = config.trialPeriodText;
+	            String actualText = premiumTrial.getText();
+	            customAssert.softAssertTrue(expectedText.equals(actualText),
+	                    "Unexpected premium trial period after applying promo code. Expected: '" + expectedText + "'. Actual: '" + actualText + "'.");
+	        } else {
+	            customAssert.fail("Can not check premium trial period after applying promo code as it was not found.");
+	        }
+	        return this;
+	    }
+	 
+	 @Step
+	    public SignUpStep2Page checkPremiumPlusTrialPeriodAferPromoCode(CustomAssert customAssert) {
+	       
+	        if (isElementDisplayed(Constants.ELEMENT_30_TIMEOUT_SECONDS, premiumPlusTrial)) {
+	            
+	            String expectedText = config.trialPeriodText;
+	            String actualText = premiumPlusTrial.getText();
+	            customAssert.softAssertTrue(expectedText.equals(actualText),
+	                    "Unexpected premium plus trial period after applying promo code. Expected: '" + expectedText + "'. Actual: '" + actualText + "'.");
+	        } else {
+	            customAssert.fail("Can not check premium plus trial period after applying promo code as it was not found.");
+	        }
+	        return this;
+	    }
 	 
 
 }

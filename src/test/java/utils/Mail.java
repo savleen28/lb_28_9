@@ -375,7 +375,9 @@ public class Mail {
         	boolean redirect = false;
             URL url = new URL(path);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            System.out.println("the url is  " + url);
             int responseCode = conn.getResponseCode();
+          
             
             Debugger.Logger.info("Confirmation Link Request Response Code : " + responseCode);
             
@@ -390,6 +392,7 @@ public class Mail {
            
         		// get redirect url from "location" header field
         		String newUrl = conn.getHeaderField("Location");
+        		System.out.println("the new url is  " + newUrl);
         		conn = (HttpURLConnection) new URL(newUrl).openConnection();
         		responseCode = conn.getResponseCode();
         		 Debugger.Logger.info("Confirmation Link Request Response Code from the redirected link : " + responseCode);

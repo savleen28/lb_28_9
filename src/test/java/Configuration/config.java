@@ -12,7 +12,8 @@ public class config {
 	public static final String rememberMeCheckBox = "//*[@id=\"remember\"]";
 	public static final String forgotPasswordLink = "//*[@id=\"form\"]/a";
 	public static final String signUpLink = "lb-link";
-	public static final String incorrectEmailErrorMessage = "//*[@id=\"form\"]/div";
+	public static final String incorrectEmailErrorMessage = "//*[@id=\"main\"]/section/div/form/div";
+	public static final String myAccountLink = "//*[@id=\"top-menu\"]/li[5]/a";
 	//Start Page
 	public static final String signInButton = "Sign in";
 	public static final String trialButton = "//*[@id=\"main-menu\"]/li[7]/a";
@@ -29,6 +30,7 @@ public class config {
 	public static final String welcomeBackMessage = "//*[@id=\"duplicate-email\"]/h3";
 	public static final String emailErrorMessage = "//*[@id=\"signup--forms\"]/form/section[1]/div[1]";
 	public static final String passwordErrorMessage = "//*[@id=\"signup--forms\"]/form/section[1]/div[2]";
+	public static final String emailAlreadyInUseErrMessage = "//*[@id=\"signup--forms\"]/section/ul/li";
 	
 	public static final String firstNameErrorMessage = "//*[@id=\"signup--forms\"]/form/section[3]/div[1]";
 	public static final String lastNameErrorMessage = "//*[@id=\"signup--forms\"]/form/section[3]/div[2]";
@@ -39,7 +41,7 @@ public class config {
 	public static final String selectPremiumPlusPlanButton = "//*[@id=\"plansContainer\"]/section/div/div[1]/div[3]/div/a[1]";
 	public static final String promoCodeLink = "//*[@id=\"plansform\"]/div[1]/div/div[2]/a";
 	public static final String promoCodeTextBox = "//*[@id=\"promocode\"]";
-	public static final String applyButton = "//*[@id=\"plansform\"]/div[2]/section/input[5]"; 
+	public static final String applyButton = "//*[@id=\"promoButton\"]";  
 	public static final String nameOnCardTextBox = "//*[@id=\"plansform\"]/div[2]/section/input[1]";
 	public static final String cardNumberTextBox = "//*[@id=\"plansform\"]/div[2]/section/input[2]";
 	public static final String selectMonthDropDown = "ccexpirityMonth";
@@ -53,6 +55,21 @@ public class config {
 	public static final String faqClick4 = "//*[@id=\"plansform\"]/div[2]/section/ul[2]/li[4]/a";
 	public static final String faqClick5 = "//*[@id=\"plansform\"]/div[2]/section/ul[2]/li[5]/a";
 	public static final String faqClick6 = "//*[@id=\"plansform\"]/div[2]/section/ul[2]/li[6]/a";
+	public static final String promoCodeEmptyErrMessage = "//*[@id=\"empty-error\"]";
+	public static final String nameOnCardEmptyErrMessage = "//*[@id=\"plansform\"]/div[2]/section/div[1]";
+	public static final String cardNoEmptyErrMessage = "//*[@id=\"plansform\"]/div[2]/section/div[2]";
+	public static final String monthEmptyErrMessage ="//*[@id=\"plansform\"]/div[2]/section/div[3]/div[1]/div";
+	public static final String yearEmptyErrMessage = "//*[@id=\"plansform\"]/div[2]/section/div[3]/div[2]/div";
+	public static final String cscEmptyErrorMessage = "//*[@id=\"plansform\"]/div[2]/section/div[4]";  
+	public static final String termsNotSelectedErrMessage = "//*[@id=\"plansform\"]/div[2]/section/div[5]";
+	public static final String termsOfServiceLink = "//*[@id=\"plansform\"]/div[2]/section/label[5]/a[1]";
+	public static final String privacyPolicyLink = "//*[@id=\"plansform\"]/div[2]/section/label[5]/a[2]";
+	public static final String standardPriceText = "//*[@id=\"plansContainer\"]/section/div/div[1]/div[1]/div/span[2]";
+	public static final String premiumPriceText = "//*[@id=\"plansContainer\"]/section/div/div[1]/div[2]/div/span[2]";
+	public static final String premiumPlusPriceText = "//*[@id=\"plansContainer\"]/section/div/div[1]/div[3]/div/span[2]";
+	public static final String standardTrialPeriod = "//*[@id=\"plansContainer\"]/section/div/div[1]/div[1]/div/span[4]";
+	public static final String premiumTrialPeriod = "//*[@id=\"plansContainer\"]/section/div/div[1]/div[2]/div/span[4]";
+	public static final String premiumPlusTrialPeriod = "//*[@id=\"plansContainer\"]/section/div/div[1]/div[3]/div/span[4]";
 	//Placeholders for SignUpPage
 	public static final String emailSignUp ="Email Address";
 	public static final String passwordSignUp ="Password (min. 6 characters)";
@@ -71,7 +88,7 @@ public class config {
 	public static final String confMessageText = "//div[@class='signup--forms']/p";
 	public static final String updateEmailLink = "//*[@id=\"signup--resendemail-togglebtn\"]";
 	public static final String resendEmailLink = "//*[@id=\"signup--forms\"]/form[2]/p/a";
-	public static final String resendEmailText = "//div[@class='resend-message valid']/p";
+	public static final String resendEmailText = "//*[@id=\"signup--forms\"]/p[2]"; 
 	public static final String updateEmailTextBox = "//*[@id=\"signup--forms\"]/form[1]/div/input[1]";
 	public static final String updateEmailButton = "//*[@id=\"signup--forms\"]/form[1]/div/input[2]";
 	public static final String updateEmailText = "//div[@class='resend-message valid']/p";
@@ -91,6 +108,20 @@ public class config {
 	public static final String firstNameRequiredMessage = "First Name is required";
 	public static final String lastNameRequiredMessage = "Last Name is required";
 	public static final String phoneNumberRequiredMessage = "Phone Number is not valid";
+	public static final String emailAlreadyInUseMessage = "Email already in use";
+	public static final String promoCodeEmptyMessage = "Please enter a promo code";
+	public static final String nameOnCardEmptyMessage ="Name on Card is required";
+	public static final String cardNoEmptyMessage ="Credit card is not valid";
+	public static final String monthEmptyMessage ="Select Month is required";
+	public static final String yearEmptyMessage ="Select Year is required";
+	public static final String cscEmptyMessage ="Card Security Code (CSC) is not valid";
+	public static final String termsNotSelectedMessage = "Click the checkbox to accept terms of service";
+	//Price of the plans after applying promo code on sign up step 2 page
+	public static final String standardPrice = "25";
+	public static final String premiumPrice = "30";
+	public static final String premiumPlusPrice = "35";
+	public static final String trialPeriodText = "30 day free trial included";
+	
 	
 	
 	

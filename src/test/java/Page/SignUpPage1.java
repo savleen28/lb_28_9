@@ -67,6 +67,9 @@ public class SignUpPage1 extends BasePage  {
 	@FindBy(xpath = config.phoneNoErrorMessage)
 	public WebElement phoneNoRequired;
 	
+	@FindBy(xpath = config.emailAlreadyInUseErrMessage)
+	public WebElement emailAlreadyInUse;
+	
    //BasePage basePage = PageFactory.initElements(driver, BasePage.class);
 
 	@Step
@@ -350,5 +353,20 @@ public class SignUpPage1 extends BasePage  {
 	        return this;
 	    }
 
+	 
+	 @Step
+	    public SignUpPage1 checkEmailAlreadyInUseErrorMessage(CustomAssert customAssert) {
+	       
+	        if (isElementDisplayed(Constants.ELEMENT_30_TIMEOUT_SECONDS, emailAlreadyInUse)) {
+	            
+	            String expectedText = config.emailAlreadyInUseMessage;
+	            String actualText = emailAlreadyInUse.getText();
+	            customAssert.softAssertTrue(expectedText.equals(actualText),
+	                    "Unexpected email already in use error message. Expected: '" + expectedText + "'. Actual: '" + actualText + "'.");
+	        } else {
+	            customAssert.fail("Can not checkemail already in use error message as it was not found.");
+	        }
+	        return this;
+	    }
 }
 

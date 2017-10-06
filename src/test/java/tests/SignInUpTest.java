@@ -31,38 +31,43 @@ import utils.Mail;
 
 public class SignInUpTest extends BaseTest{
 	/*@Title("TST-423")
-	@Test(testName = "TST-423", description = "Sign In screen (Functional), 'Signing In in 123Loadboard.'")
+	@Test(testName = "TST-423", priority =1,description = "Sign In screen (Functional), 'Signing In in 123Loadboard.'")
 	public void signUpScreenFunctional() throws InterruptedException {
 		CustomAssert customAssert = new CustomAssert();
 		StartPage startPage = new StartPage();
 		SignInPage signInPage = startPage.clickSignInButton();
-		//CustomAssert.hardAssertTrue(signInPage.isPageOpened(), "Start Page was not opened"); //check this
-		//Create new user
+		// CustomAssert.hardAssertTrue(signInPage.isPageOpened(), "Start Page was not
+		// opened"); //check this
+		// Create new user
 		SignUpPage1 signUpPage = signInPage.clickSignUpLink();
-		//CustomAssert.hardAssertFalse(signUpPage.isPageOpened(), "Sign Up page was not opened");
+		// CustomAssert.hardAssertFalse(signUpPage.isPageOpened(), "Sign Up page was not
+		// opened");
 		String firstName = "FirstName" + Random1.genFirstNameRandomNo();
 		String lastName = "LastName" + Random1.genLastNameRandomNo();
 		String unverifiedEmail = "qa" + Random1.genShortRandNumber() + "@test.123loadboard.us";
 		String unverifiedPassword = "password";
-        String phoneNumber = "8005551212";
-        String companyName = "Dummy Company";
-        String cardNo = "4242424242424242";
-        String month = "01 - January";
-        String year = "2024";
-        String csc = "024";
-        GeneralActions generalActions = new GeneralActions();
-        generalActions.typeSignUpInfo(unverifiedEmail, unverifiedPassword, firstName, lastName, companyName, phoneNumber);
-        SignUpStep2Page signUpStep2 = signUpPage.clickSignUpButton();
-        generalActions.typeSignUpStep2Info(firstName, cardNo, month, year, csc);
-        signUpStep2.clickTerms();
-        signUpStep2.clickApply();
-        customAssert.assertAll();
-        //Mail mail = new Mail();
-        Thread.sleep(60000L);
-        Mail.confirmProfileEmailUpdate("qa@test.123loadboard.us","tKj7tQjd1Gkrdu7K",unverifiedEmail);
-        StartPage startPage1 = new StartPage();
+		String phoneNumber = "8005551212";
+		String companyName = "Dummy Company";
+		String cardNo = "4242424242424242";
+		String month = "01 - January";
+		String year = "2024";
+		String csc = "024";
+		GeneralActions generalActions = new GeneralActions();
+		generalActions.typeSignUpInfo(unverifiedEmail, unverifiedPassword, firstName, lastName, companyName,
+				phoneNumber);
+		SignUpStep2Page signUpStep2 = signUpPage.clickSignUpButton();
+		generalActions.typeSignUpStep2Info(firstName, cardNo, month, year, csc);
+		signUpStep2.clickTerms();
+		signUpStep2.clickcreateMyAccount();
+		customAssert.assertAll();
+		Thread.sleep(60000L);
+		String link = Mail.confirmProfileEmailUpdate("qa@test.123loadboard.us", "tKj7tQjd1Gkrdu7K", unverifiedEmail);
+		driver.get(link);
+		driver.navigate().back();
+		StartPage startPage1 = new StartPage();
 		SignInPage signInPage1 = startPage.clickSignInButton();
-		signInPage1.typeUsername(unverifiedEmail).typePassword(unverifiedPassword).clickSignIn();
+		HomePage homePage = signInPage1.typeUsername(unverifiedEmail).typePassword(unverifiedPassword).clickSignIn();
+		homePage.clickLogoutDropdown().clickLogout(); //
         
         
         
@@ -74,7 +79,7 @@ public class SignInUpTest extends BaseTest{
 	}*/
 	
 	/*@Title("TST-427")
-	@Test(testName = "TST-427", description = "Sign In screen (Functional) and check confirmation details, 'Signing In in 123Loadboard.'")
+	@Test(testName = "TST-427", priority =2,description = "Sign In screen (Functional) and check confirmation details, 'Signing In in 123Loadboard.'")
 	public static void signUpConfirmation() {
 		CustomAssert customAssert = new CustomAssert();
 		StartPage startPage = new StartPage();
@@ -99,7 +104,7 @@ public class SignInUpTest extends BaseTest{
         SignUpStep2Page signUpStep2 = signUpPage.clickSignUpButton();
         generalActions.typeSignUpStep2Info(firstName, cardNo, month, year, csc);
         signUpStep2.clickTerms();
-        signUpStep2.clickApply();
+        signUpStep2.clickcreateMyAccount();
         ConfirmationPage confirmationPage = new ConfirmationPage();
         confirmationPage.isConfMessagePresent(customAssert);
         confirmationPage.clickUpdateEmail().typeEmail(updatedEmail).clickUpdateEmailButton();
@@ -110,7 +115,7 @@ public class SignInUpTest extends BaseTest{
 	}*/
 	
 	/*@Title("TST-424")
-	@Test(testName = "TST-424", dataProvider = DataProviderPool.NO_ADDON_CREDENTIALS, dataProviderClass = DataProviderPool.class, description = "Sign In screen (Functional), 'Signing In in 123Loadboard.'")
+	@Test(testName = "TST-424", priority =3,dataProvider = DataProviderPool.NO_ADDON_CREDENTIALS, dataProviderClass = DataProviderPool.class, description = "Sign In screen (Functional), 'Signing In in 123Loadboard.'")
 	public static void signInFunctional(String login,String password) {
 		CustomAssert customAssert = new CustomAssert();
 		StartPage startPage = new StartPage();
@@ -136,7 +141,7 @@ public class SignInUpTest extends BaseTest{
 	        SignUpStep2Page signUpStep2 = signUpPage.clickSignUpButton();
 	        generalActions.typeSignUpStep2Info(firstName, cardNo, month, year, csc);
 	        signUpStep2.clickTerms();
-	        signUpStep2.clickApply();
+	        signUpStep2.clickcreateMyAccount();
 	        SignInPage signInPage = startPage.clickSignInButton();
 		    signInPage.typeUsername("username").typePassword("password").clickSignIn();
 		    customAssert.softAssertTrue(new SignInPage().getIncorrectEmailErrorMessage(customAssert), "There was no error message after filling in wrong credentials.");
@@ -151,12 +156,13 @@ public class SignInUpTest extends BaseTest{
 		   homePage.clickLogoutDropdown().clickLogout();
 		   generalActions.login(login, password);
 		   customAssert.softAssertTrue(homePage.isPageOpened(), "User was not logged in");
+		   homePage.clickLogoutDropdown().clickLogout();
 		   customAssert.assertAll();
-		 }*/
-	
+		 }
+	*/
 	
 	/*@Title("TST-426")
-	@Test(testName = "TST-426",description = "Forgot password (Functional), 'User forgets password.'", dataProvider = DataProviderPool.NO_ADDON_CREDENTIALS, dataProviderClass = DataProviderPool.class)
+	@Test(testName = "TST-426",priority =4, description = "Forgot password (Functional), 'User forgets password.'", dataProvider = DataProviderPool.NO_ADDON_CREDENTIALS, dataProviderClass = DataProviderPool.class)
 	public void forgotPasswordFunctionalTest(String email, String password) throws InterruptedException {
 		String notRegisteredEmail = "notregisteredemail@gmail.com";
 		String incorrectEmail = "incorrectemail";
@@ -175,14 +181,14 @@ public class SignInUpTest extends BaseTest{
 		Thread.sleep(10000L);
 		forgotPasswordPage.isInvalidEmailErrorMessageDisplayed(customAssert);
 		new ForgotPasswordPage().typeEmail("qa47136518@test.123loadboard.us").clickResetPassword();
-		Thread.sleep(20000L);
+		//Thread.sleep(20000L);
 		forgotPasswordPage.isEmailSentMessageDisplayed(customAssert);
 		customAssert.assertAll();
 		
-	}*/
+	}
 	
-	/*@Title("TST-5")
-	@Test(testName = "TST-5",description = "Sign Out (Functional), 'Signing out from application.'", dataProvider = DataProviderPool.NO_ADDON_CREDENTIALS, dataProviderClass = DataProviderPool.class)
+	@Title("TST-5")
+	@Test(testName = "TST-5",priority = 5,description = "Sign Out (Functional), 'Signing out from application.'", dataProvider = DataProviderPool.NO_ADDON_CREDENTIALS, dataProviderClass = DataProviderPool.class)
 	public void signOutFunctionalTest(String login, String password) {
 		CustomAssert customAssert = new CustomAssert();
 		StartPage startPage = new StartPage();
@@ -194,30 +200,49 @@ public class SignInUpTest extends BaseTest{
 		CustomAssert.hardAssertTrue(new StartPage().isPageOpened(), "Start page was not opened after signing out.");
         customAssert.assertAll();
 		
-	}*/
+	}
+	*/
 	
-	@Title("TST-6")
-	@Test(testName = "TST-6",description = "Sign Out (Functional), 'Signing out from application.'", dataProvider = DataProviderPool.VERIFIED_CREDENTIALS, dataProviderClass = DataProviderPool.class)
-	public void signUpWithExistingIdTest(String login, String password) {
-		 String firstName = "FirstName" + Random1.genFirstNameRandomNo();
-			String lastName = "LastName" + Random1.genLastNameRandomNo();
-			String unverifiedEmail = "qa" + Random1.genShortRandNumber() + "@test.123loadboard.us";
-			String unverifiedPassword = "password";
-	        String phoneNumber = "8005551212";
+	/*@Title("TST-6")
+	@Test(testName = "TST-6",priority = 6,description = "Sign In (Functional), 'Signing In application and verifying Promo Code Functionality.'")
+    public void promoCodeVerification() throws InterruptedException {
 		CustomAssert customAssert = new CustomAssert();
 		StartPage startPage = new StartPage();
 		SignInPage signInPage = startPage.clickSignInButton();
 		SignUpPage1 signUpPage = signInPage.clickSignUpLink();
-		signUpPage.clickSignUpButton();
-		signUpPage.checkEmailRequiredErrorMessage(customAssert).checkPasswordRequiredErrorMessage(customAssert)
-		.checkFirstNameRequiredErrorMessage(customAssert).checkLastNameRequiredErrorMessage(customAssert).checkPhoneNoNameRequiredErrorMessage(customAssert);
-		signUpPage.typeEmail(unverifiedEmail).typeFirstName(firstName).typeLastName(lastName)
-		.typePhoneNumber(phoneNumber).clickSignUpButton();
-		signUpPage.checkPasswordRequiredErrorMessage(customAssert);
-		signUpPage.typeEmail("").typePassword(unverifiedPassword).typeFirstName(firstName).typeLastName(lastName).typePhoneNumber(phoneNumber).clickSignUpButton();
-		signUpPage.checkEmailRequiredErrorMessage(customAssert);
-		
+		String firstName = "FirstName" + Random1.genFirstNameRandomNo();
+		String lastName = "LastName" + Random1.genLastNameRandomNo();
+		String unverifiedEmail = "qa" + Random1.genShortRandNumber() + "@test.123loadboard.us";
+		String unverifiedPassword = "password";
+		String phoneNumber = "8005551212";
+		String companyName = "Dummy Company";
+		String cardNo = "4242424242424242";
+		String month = "01 - January";
+		String year = "2024";
+		String csc = "024";
+		String promoCode = "92000";
+		GeneralActions generalActions = new GeneralActions();
+		generalActions.typeSignUpInfo(unverifiedEmail, unverifiedPassword, firstName, lastName, companyName,
+				phoneNumber);
+		SignUpStep2Page signUpStep2 = signUpPage.clickSignUpButton();
+		signUpStep2.clickHavePromoCodeLink().typePromoCode(promoCode).clickApply();
+		Thread.sleep(3000L);
+		signUpStep2.checkStandardPriceAferPromoCode(customAssert).checkPremiumPriceAferPromoCode(customAssert)
+		.checkPremiumPlusPriceAferPromoCode(customAssert).checkStandardTrialPeriodAferPromoCode(customAssert)
+		.checkPremiumTrialPeriodAferPromoCode(customAssert).checkPremiumPlusTrialPeriodAferPromoCode(customAssert);
 		customAssert.assertAll();
+		
+	}*/
+	
+	@Title("TST-7")
+	@Test(testName = "TST-7",priority = 7,description = "Sign In (Functional), 'SignIn Functionality - various scenarios.'",dataProvider = DataProviderPool.NO_ADDON_CREDENTIALS, dataProviderClass = DataProviderPool.class)
+	public void sigInVerification(String email, String password) {
+		CustomAssert customAssert = new CustomAssert();
+		StartPage startPage = new StartPage();
+		SignInPage signInPage = startPage.clickSignInButton();
+		HomePage homePage = signInPage.typeUsername(email).typePassword(password).clickSignIn();
+		new ActionBar().clickBackButton();
+		signInPage.clickMyAccount();
+		customAssert.softAssertTrue(homePage.isPageOpened(), "User was not logged in");
 	}
-
 }
