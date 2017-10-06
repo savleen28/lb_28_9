@@ -204,7 +204,7 @@ public class SignInUpTest extends BaseTest{
 	*/
 	
 	/*@Title("TST-6")
-	@Test(testName = "TST-6",priority = 6,description = "Sign In (Functional), 'Signing In application and verifying Promo Code Functionality.'")
+	@Test(testName = "TST-6",priority = 6,description = "Sign Up (Functional), 'Sign Up and verify Promo Code.'")
     public void promoCodeVerification() throws InterruptedException {
 		CustomAssert customAssert = new CustomAssert();
 		StartPage startPage = new StartPage();
