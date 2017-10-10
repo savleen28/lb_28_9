@@ -8,13 +8,10 @@ import java.util.Scanner;
 
 public class Properties {
 
-    public static String runUrl = "";
-    public static String runName = "";
-    public static String appium_platform = "";
-    public static String device_name = "";
-    public static String jiraCall = "";
-    public static String ellapesTime = "n/a";
-
+    public static String browser = "";
+    
+    public static boolean isChrome = getPlatform().equalsIgnoreCase("Chrome");
+    public static boolean isFirefox = getPlatform().equalsIgnoreCase("Firefox");
    
 
  
@@ -22,6 +19,24 @@ public class Properties {
     public static String getConfigDir() {
         return System.getProperty(PropertiesNames.CONFIG_DIR.toString());
     }
+    
+    public static String getBrowser() {
+    	return System.getProperty(PropertiesNames.WEB_BROWSER.toString());
+    }
+    
+    public static String getPlatform() {
+    	if ( browser.isEmpty()) {
+    		browser = System.getProperty(PropertiesNames.WEB_BROWSER.toString());
+    		if(!browser.equalsIgnoreCase("Chrome") && !browser.equalsIgnoreCase("Firefox")) {
+    			PropertiesNames.WEB_BROWSER.setValue("Chrome");
+    			browser = "Chrome";
+    		}
+    	}
+    	
+    	return browser;
+    }
+    
+    
 
     
 }

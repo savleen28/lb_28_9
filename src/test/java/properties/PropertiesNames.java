@@ -1,7 +1,9 @@
 package properties;
 
 public enum PropertiesNames {
-	CONFIG_DIR("config.dir");
+	CONFIG_DIR("config.dir"),
+	WEB_BROWSER("browser");
+	
 	private final String propertyName;
 
     PropertiesNames(String propertyName) {

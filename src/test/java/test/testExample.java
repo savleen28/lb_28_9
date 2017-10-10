@@ -6,16 +6,19 @@ import java.util.ArrayList;
 import java.util.Set;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 public class testExample {
 	
 	public static WebDriver driver;
-	@Test
+	/*@Test
 	public void logIn() throws InterruptedException {
 		System.setProperty("webdriver.chrome.driver", "C:\\Users\\SavleenB\\Softwares\\chromedriver_win32\\chromedriver.exe");
 		driver =new ChromeDriver();
@@ -40,22 +43,19 @@ public class testExample {
 		
 		
 		
-	}
-	
-	/*public static void main(String[] args) {
-		System.setProperty("webdriver.chrome.driver", "C:\\Users\\SavleenB\\Softwares\\chromedriver_win32\\chromedriver.exe");
-		driver =new ChromeDriver();
-		//String baseUrl = "http://www.google.com";
-		    driver.get("http://twitter.com");
-		    driver.findElement(By.cssSelector("body")).sendKeys(Keys.CONTROL +"t");
-
-		    ArrayList<String> tabs = new ArrayList<String> (driver.getWindowHandles());
-		    driver.switchTo().window(tabs.get(1)); //switches to new tab
-		    driver.get("https://www.facebook.com");
-
-		    driver.switchTo().window(tabs.get(0)); // switch back to main screen        
-		    driver.get("https://www.news.google.com");
 	}*/
+	
+	public static void main(String[] args) {
+		System.setProperty("webdriver.gecko.driver","C:\\Users\\SavleenB\\Softwares\\geckodriver-v0.18.0-win64\\geckodriver.exe");
+		driver = new FirefoxDriver();
+		    Capabilities cap = ((RemoteWebDriver) driver).getCapabilities();
+		    String browserName = cap.getBrowserName().toLowerCase();
+		    System.out.println(browserName);
+		    String os = cap.getPlatform().toString();
+		    System.out.println(os);
+		    String v = cap.getVersion().toString();
+		    System.out.println(v);
+	}
 
 	
 	
