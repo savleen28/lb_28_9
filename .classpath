@@ -9,6 +9,7 @@
   <classpathentry kind="var" path="M2_REPO/javax/inject/javax.inject/1/javax.inject-1.jar"/>
   <classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
   <classpathentry kind="var" path="M2_REPO/junit/junit/3.8.1/junit-3.8.1.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/codehaus/groovy/groovy/2.4.5/groovy-2.4.5.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/testng/testng/6.11/testng-6.11.jar"/>
   <classpathentry kind="var" path="M2_REPO/com/beust/jcommander/1.64/jcommander-1.64.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/yaml/snakeyaml/1.17/snakeyaml-1.17.jar"/>
